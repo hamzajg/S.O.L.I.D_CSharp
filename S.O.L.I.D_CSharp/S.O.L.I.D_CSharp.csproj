@@ -12,5 +12,7 @@
     <Folder Include="OCP\Violate\" />
     <Folder Include="LSP\" />
     <Folder Include="LSP\Violate\" />
+    <Folder Include="ISP\" />
+    <Folder Include="ISP\Violate\" />
   </ItemGroup>
 </Project>
