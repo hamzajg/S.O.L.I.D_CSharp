@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="SRP\" />
+    <Folder Include="SRP\Violate\" />
+  </ItemGroup>
 </Project>
