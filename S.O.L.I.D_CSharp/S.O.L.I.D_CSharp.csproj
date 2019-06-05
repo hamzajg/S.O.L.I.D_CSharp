@@ -14,5 +14,7 @@
     <Folder Include="LSP\Violate\" />
     <Folder Include="ISP\" />
     <Folder Include="ISP\Violate\" />
+    <Folder Include="DIP\" />
+    <Folder Include="DIP\Violate\" />
   </ItemGroup>
 </Project>

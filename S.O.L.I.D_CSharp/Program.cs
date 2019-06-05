@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using S.O.L.I.D_CSharp.DIP;
 using S.O.L.I.D_CSharp.LSP;
 using S.O.L.I.D_CSharp.OCP;
 using S.O.L.I.D_CSharp.OCP.Violate;
@@ -55,14 +56,23 @@ namespace S.O.L.I.D_CSharp
                 Console.WriteLine($" - {item.Name} is big and blue");
             }
 
-            // LSP
+            // 03 - LSP
             var rc = new Rectangle(2, 3);
             Console.WriteLine($"{rc} has area {Area(rc)}");
             Rectangle sq = new Square();
             sq.Width = 4;
             Console.WriteLine($"{sq} has area {Area(sq)}");
 
+            // 05 - DIP
+            var parent = new Person() { Name = "John" };
+            var child1 = new Person() { Name = "Chris" };
+            var child2 = new Person() { Name = "Mary" };
 
+            var relationships = new DIP.Relationships();
+            relationships.AddParentAndChild(parent, child1);
+            relationships.AddParentAndChild(parent, child2);
+
+            _ = new DIP.Research(relationships);
         }
     }
 }
