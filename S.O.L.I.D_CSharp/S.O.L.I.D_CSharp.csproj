@@ -10,5 +10,7 @@
     <Folder Include="SRP\Violate\" />
     <Folder Include="OCP\" />
     <Folder Include="OCP\Violate\" />
+    <Folder Include="LSP\" />
+    <Folder Include="LSP\Violate\" />
   </ItemGroup>
 </Project>

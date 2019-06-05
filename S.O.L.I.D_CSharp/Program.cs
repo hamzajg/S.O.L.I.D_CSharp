@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using S.O.L.I.D_CSharp.LSP;
 using S.O.L.I.D_CSharp.OCP;
 using S.O.L.I.D_CSharp.OCP.Violate;
 using S.O.L.I.D_CSharp.SRP;
@@ -8,6 +9,8 @@ namespace S.O.L.I.D_CSharp
 {
     class Program
     {
+        static int Area(Rectangle r) => r.Width * r.Height;
+
         static void Main(string[] args)
         {
             // 01 - SRP
@@ -51,6 +54,13 @@ namespace S.O.L.I.D_CSharp
             {
                 Console.WriteLine($" - {item.Name} is big and blue");
             }
+
+            // LSP
+            var rc = new Rectangle(2, 3);
+            Console.WriteLine($"{rc} has area {Area(rc)}");
+            Rectangle sq = new Square();
+            sq.Width = 4;
+            Console.WriteLine($"{sq} has area {Area(sq)}");
 
 
         }
