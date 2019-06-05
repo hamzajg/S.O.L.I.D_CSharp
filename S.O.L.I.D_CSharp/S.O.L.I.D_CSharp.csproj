@@ -8,5 +8,7 @@
   <ItemGroup>
     <Folder Include="SRP\" />
     <Folder Include="SRP\Violate\" />
+    <Folder Include="OCP\" />
+    <Folder Include="OCP\Violate\" />
   </ItemGroup>
 </Project>

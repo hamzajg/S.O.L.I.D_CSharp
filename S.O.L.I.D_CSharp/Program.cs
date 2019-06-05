@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using S.O.L.I.D_CSharp.OCP;
+using S.O.L.I.D_CSharp.OCP.Violate;
 using S.O.L.I.D_CSharp.SRP;
 
 namespace S.O.L.I.D_CSharp
@@ -8,6 +10,7 @@ namespace S.O.L.I.D_CSharp
     {
         static void Main(string[] args)
         {
+            // 01 - SRP
             var j = new Journal();
             j.AddEntry("I cried today");
             j.AddEntry("I ate a bug");
@@ -18,6 +21,38 @@ namespace S.O.L.I.D_CSharp
             var filename = @"Journal.txt";
             p.SaveToFIle(j, filename, true);
             Process.Start(filename);
+
+            // 02 - OCP
+            var apple = new Product("Apple", Color.Green, Size.Small);
+            var tree = new Product("Tree", Color.Green, Size.Large);
+            var house = new Product("House", Color.Blue, Size.Large);
+
+            Product[] products = { apple, tree, house };
+            var pf = new ProductFilter();
+            Console.WriteLine("Green Product (Old):");
+            foreach(var item in pf.FilterByColor(products, Color.Green))
+            {
+                Console.WriteLine($" - {item.Name} is green");
+            }
+
+            var bf = new BetterFilter();
+            Console.WriteLine("Green Product (New):");
+            foreach (var item in bf.Filter(products, new ColorSpecification(Color.Green)))
+            {
+                Console.WriteLine($" - {item.Name} is green");
+            }
+            Console.WriteLine("Large Product (New):");
+            foreach (var item in bf.Filter(products, new SizeSpecification(Size.Large)))
+            {
+                Console.WriteLine($" - {item.Name} is large");
+            }
+            Console.WriteLine("Large Blue Product (New):");
+            foreach (var item in bf.Filter(products, new AndSpecification<Product>(new SizeSpecification(Size.Large), new ColorSpecification(Color.Blue))))
+            {
+                Console.WriteLine($" - {item.Name} is big and blue");
+            }
+
+
         }
     }
 }
