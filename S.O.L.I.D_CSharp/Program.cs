@@ -24,7 +24,10 @@ namespace S.O.L.I.D_CSharp
             var p = new Persistence();
             var filename = @"Journal.txt";
             p.SaveToFIle(j, filename, true);
-            Process.Start(filename);
+            // UseShellExecute lets the OS open the file with its default
+            // application. Without it, .NET Core tries to execute the text
+            // file directly and fails with "Permission denied".
+            Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
 
             // 02 - OCP
             var apple = new Product("Apple", Color.Green, Size.Small);
