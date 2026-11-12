@@ -35,6 +35,23 @@ last step is the only part that may not do anything visible.
 standalone illustrations: they compile as part of the project but are not
 invoked from `Main`.
 
+## Tests
+
+```bash
+dotnet test S.O.L.I.D_CSharp.sln
+```
+
+27 xUnit tests, one behaviour each, grouped by principle. They state the rules
+the examples are about rather than restating the code:
+
+| File | Tests |
+|---|---|
+| [`SrpTests`](S.O.L.I.D_CSharp.Tests/SrpTests.cs) | Entry numbering, entry order, removal, and that `Persistence` writes, refuses to overwrite without `overwrite: true`, and loads back what it saved |
+| [`OcpTests`](S.O.L.I.D_CSharp.Tests/OcpTests.cs) | Each specification filters on its own, `AndSpecification` needs both sides, and a new rule is a new specification |
+| [`LspTests`](S.O.L.I.D_CSharp.Tests/LspTests.cs) | A rectangle keeps its two sides; a `Square` assigned through a `Rectangle` does not — the violation, pinned so it cannot be mistaken for correct |
+| [`IspTests`](S.O.L.I.D_CSharp.Tests/IspTests.cs) | `MultiFunctionMachine` reaches only the injected `IPrinter` / `IScanner` it needs |
+| [`DipTests`](S.O.L.I.D_CSharp.Tests/DipTests.cs) | `Relationships` answers the query, and `Research` accepts any `IRelationshipBrowser` — including a fake that never touches the concrete store |
+
 ## Layout
 
 ```
@@ -43,13 +60,15 @@ S.O.L.I.D_CSharp/
     Violate/   # the version that breaks the principle
     ...        # the refactored version
   Program.cs   # runs the examples
+S.O.L.I.D_CSharp.Tests/   xunit tests, one file per principle
 S.O.L.I.D_CSharp.sln
 ```
 
 ## Continuous integration
 
 [`.github/workflows/ci.yml`](.github/workflows/ci.yml) builds the solution in
-Release configuration on every push and pull request to `master`.
+Release configuration and runs the tests on every push and pull request to
+`master`.
 
 ## License
 
